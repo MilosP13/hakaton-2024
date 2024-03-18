@@ -1,0 +1,16 @@
+.navbar {
+    background-color: #249aac; /* Example background color */
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .navbar-brand {
+    color: #fff; /* Example text color */
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .navbar-text {
+    font-weight: bold;
+  }
+  

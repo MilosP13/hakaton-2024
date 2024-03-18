@@ -1,0 +1,20 @@
+#map {
+  position: fixed;
+  top: 50px; /* Adjust this value based on the height of your Navbar */
+  left: 0;
+  bottom: 0;
+  right: 0;
+  /* Add padding-top or margin-top to create space for the Navbar */
+  padding-top: 50px; /* Same value as Navbar height */
+}
+
+.show-more-btn {
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+  
