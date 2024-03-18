@@ -33,7 +33,8 @@ const OneEstateModal = ({ web3, account, factoryAddress, oneEstate, onClose }) =
     sqft: 0,
     floor: "",
     heatingType: "",
-    numberOfRooms: 0
+    numberOfRooms: 0,
+    owner: ""
   });
 
   useEffect(() => {
@@ -51,7 +52,6 @@ const OneEstateModal = ({ web3, account, factoryAddress, oneEstate, onClose }) =
         const heatingType = await estateContract.methods.getHeatingType().call();
         const numberOfRooms = parseInt(await estateContract.methods.getNumberOfRooms().call()); // Convert to integer
         const owner = await estateContract.methods.getBeneficiary().call();
-        console.log("Owner je: " + owner)
 
         setEstateInfo({
           locationName,
@@ -63,7 +63,8 @@ const OneEstateModal = ({ web3, account, factoryAddress, oneEstate, onClose }) =
           sqft,
           floor,
           heatingType,
-          numberOfRooms
+          numberOfRooms,
+          owner
         });
       } catch (error) {
         console.error('Error getting real estate info:', error);
@@ -74,11 +75,37 @@ const OneEstateModal = ({ web3, account, factoryAddress, oneEstate, onClose }) =
   }, [oneEstate, web3.eth.Contract]);
 
   /// BUY
-  const handleBuyClick = () => {
+  const handleBuyClick = async () => {
+    try {
+      const contractInstance = new web3.eth.Contract(RealEstateABI.abi, oneEstate);
+      const priceWei = web3.utils.toWei(estateInfo.price.toString(), 'ether'); // ovo mi ne treba
     
-    console.log('Buy button clicked');
-
+      const transactionParameters = {
+        to: oneEstate, 
+        from: account, 
+        value: web3.utils.toHex(estateInfo.price), 
+        data: contractInstance.methods.buyRealEstate().encodeABI(), 
+        gas: web3.utils.toHex(5000000), 
+      };
+    
+      const txHash = await window.ethereum.request({
+        method: 'eth_sendTransaction',
+        params: [transactionParameters],
+      });
+    
+      console.log("Transaction Hash:", txHash);
+      console.log("Buy request successfully sent.");
+      // Optionally, you can handle success and update UI accordingly
+    } catch (error) {
+      console.error("Error buying real estate: ", error);
+      // Handle error, show error message to the user, etc.
+    }
   };
+
+
+  const handleShowOwner = () => {
+   window.alert('Owner is: '+ estateInfo.owner);
+  }
 
   return (
     <div className="modal">
@@ -106,7 +133,7 @@ const OneEstateModal = ({ web3, account, factoryAddress, oneEstate, onClose }) =
 
         <div className="estate-button-container">
         <button className="estate-button-buy" onClick={handleBuyClick}>Buy</button>
-
+        <button className="estate-button-show" onClick={handleShowOwner}>Show Owner</button>
         <button className="estate-button-close" onClick={onClose}>Close</button>
         </div>
       </div>
