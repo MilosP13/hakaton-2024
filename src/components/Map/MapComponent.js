@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css'; // Import Leaflet CSS
-import './MapPage.css'; // Import custom CSS for the map page
 import RealEstateABI from '../../contracts/RealEstate.json';
 import RealEstateFactoryABI from '../../contracts/RealEstateFactory.json';
 import customMarkerIcon from '../../icons&pictures/custom-marker-icon.png'; 
 import customHouseMarker from '../../icons&pictures/realestate-pin.png';
 import OneEstateModal from '../OneEstateModal/OneEstateModal';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css'; // Import Leaflet CSS
+import './MapPage.css'; // Import custom CSS for the map page
 
 const MapComponent = ({ web3, account, factoryAddress }) => {
   const mapRef = useRef(null);
@@ -41,7 +41,9 @@ const MapComponent = ({ web3, account, factoryAddress }) => {
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const { latitude, longitude } = position.coords;
-            L.marker([latitude, longitude], { icon: customIcon }).addTo(map).bindPopup('Your Location').openPopup();
+            const latbg = 44.7737259;
+            const lonbg = 20.4752945;
+            L.marker([latbg, lonbg], { icon: customIcon }).addTo(map).bindPopup('Your Location').openPopup();
             map.setView([latitude, longitude], 13);
           },
           (error) => {
