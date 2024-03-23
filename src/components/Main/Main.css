@@ -1,26 +1,177 @@
-.button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; 
-  }
-  
-  .connect-button {
-    padding: 12px 24px;
-    font-size: 36px;
-    background-color: #249aac; 
-    color: #fff; 
-    border: 5 black;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease; 
-  }
-  
-  .connect-button:hover {
-    background-color: #7bbbff; 
-  }
-  
+.welcome-information{
+  display: flex;
+  padding: 20%;
+  margin: 20%;
+  height: 300px;
+  width: 700px;
+  background-color: rgba(77, 136, 209, 0.5); 
+  position: absolute;
+}
 
-  .main-container {
-    background: url('https://cityexpert.rs/a/sites/default/files/styles/1920x600/public/bw/novogradnja-beograd-na-vodi-kula-st-regis.jpg') center/cover no-repeat; /* Replace 'path/to/your/background/image.jpg' with the actual path to your image */
+.background-image {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  margin-top: 5px;
+  opacity: 0.8;
+  background-image: url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1296&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
+  background-size: cover;
+  filter: blur(2px);
+}
+
+.background-image2{
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://scet.berkeley.edu/wp-content/uploads/BCgraphicelement-3-1024x576.png');
+  background-size: cover;
+  opacity: 0.12;
+}
+
+.welcome-information {
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding: 20px;
+  height: 300px;
+  width: 500px;
+  background-color: rgba(77, 136, 209, 0.5); 
+  position: absolute;
+  top: 13%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  box-shadow: 20px 20px 20px #457fae;
+  border-radius: 2px;
+
+}
+
+.metamask{
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 40px 20%;
+}
+
+.connect-button {
+background-color: #52a08a;
+height: 40px;
+padding: 0 40px;
+border-radius: 10px;
+margin: 10px 40px; 
+color: white;
+border: 2px solid  #317552;
+transition: 0.5s;
+}
+
+.connect-button:hover {
+  background-color: #317552; 
+  letter-spacing: 0.px;
+  box-shadow: 0 0 35px #317552;
+  border: 2px solid #90afa0;
+}
+
+.start{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  margin-top: 5%;
+  margin-left: 40px;
+  font-size: 11px;
+
+}
+
+.titlee{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 500px;
+  
+}
+.img-ether{
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease;
+}
+
+.img-ether:hover {
+  transform: scale(1.2);
+}
+
+.img-ether-2 {
+  width: 400px;
+  height: 400px;
+  position: fixed;
+  top: 25%;
+  right: 20px;
+  margin-right: 20px;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+  animation: moveImage 5s infinite alternate;
+}
+
+.img-ether-2:hover {
+  transform: scale(1.2) rotate(45deg);
+}
+
+@keyframes moveImage {
+  0% {
+    transform: translateY(0);
   }
+  50% {
+    transform: translateY(60px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .welcome-information {
+    flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding: 20px;
+  height: 300px;
+  width: 300px;
+  background-color: rgba(77, 136, 209, 0.5); 
+  position: absolute;
+  top: calc(60px + 100px);
+  bottom: 100px;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  box-shadow: 20px 20px 20px #457fae;
+  border-radius: 2px;
+  }
+
+  .img-ether{
+    display: none;
+  }
+  .img-ether-2{
+    display: none;
+  }
+
+
+  .connect-button {
+    background-color: #52a08a;
+    height: fit-content;
+    width: 100%;
+    padding: 0 40px;
+    border-radius: 10px;
+    margin: 10px 40px; 
+    color: white;
+    border: 2px solid  #317552;
+    transition: 0.5s;
+    }
+    
+    .connect-button:hover {
+      background-color: #317552; 
+      letter-spacing: 0.px;
+      box-shadow: 0 0 35px #317552;
+      border: 2px solid #90afa0;
+    }
+}
