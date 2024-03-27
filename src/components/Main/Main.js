@@ -63,7 +63,7 @@ const Main = () => {
         </div>
         {!isConnected && (
         <div className="metamask">
-          <button className="connect-button" onClick={checkMetaMaskConnection}>Connect with MetaMask</button>
+          <button className="connect-button" onClick={checkMetaMaskConnection}>Connect to MetaMask</button>
         </div>
       )}
       </div>
