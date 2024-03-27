@@ -44,7 +44,7 @@ const MapComponent = ({ web3, account, factoryAddress }) => {
             const latbg = 44.7737259;
             const lonbg = 20.4752945;
             L.marker([latbg, lonbg], { icon: customIcon }).addTo(map).bindPopup('Your Location').openPopup();
-            map.setView([latitude, longitude], 13);
+            map.setView([latbg, lonbg], 13);
           },
           (error) => {
             console.error('Error getting user location:', error);
