@@ -42,15 +42,15 @@ const OneEstateModal = ({ web3, account, factoryAddress, oneEstate, onClose }) =
       try {
         const estateContract = new web3.eth.Contract(RealEstateABI.abi, oneEstate);
         const locationName = await estateContract.methods.getLocationName().call();
-        const price = parseInt(await estateContract.methods.getPrice().call()); // Convert to integer
-        const lat = parseInt(await estateContract.methods.getLat().call()); // Convert to integer
-        const lon = parseInt(await estateContract.methods.getLon().call()); // Convert to integer
+        const price = parseInt(await estateContract.methods.getPrice().call()); 
+        const lat = parseInt(await estateContract.methods.getLat().call()); 
+        const lon = parseInt(await estateContract.methods.getLon().call()); 
         const registered = await estateContract.methods.isRegistered().call();
         const mortgageFree = await estateContract.methods.isMortgageFree().call();
-        const sqft = parseInt(await estateContract.methods.getSqft().call()); // Convert to integer
+        const sqft = parseInt(await estateContract.methods.getSqft().call()); 
         const floor = await estateContract.methods.getFloor().call();
         const heatingType = await estateContract.methods.getHeatingType().call();
-        const numberOfRooms = parseInt(await estateContract.methods.getNumberOfRooms().call()); // Convert to integer
+        const numberOfRooms = parseInt(await estateContract.methods.getNumberOfRooms().call());
         const owner = await estateContract.methods.getBeneficiary().call();
 
         setEstateInfo({
@@ -78,7 +78,7 @@ const OneEstateModal = ({ web3, account, factoryAddress, oneEstate, onClose }) =
   const handleBuyClick = async () => {
     try {
       const contractInstance = new web3.eth.Contract(RealEstateABI.abi, oneEstate);
-      const priceWei = web3.utils.toWei(estateInfo.price.toString(), 'ether'); // ovo mi ne treba
+      const priceWei = web3.utils.toWei(estateInfo.price.toString(), 'ether'); 
     
       const transactionParameters = {
         to: oneEstate, 
@@ -95,10 +95,8 @@ const OneEstateModal = ({ web3, account, factoryAddress, oneEstate, onClose }) =
     
       console.log("Transaction Hash:", txHash);
       console.log("Buy request successfully sent.");
-      // Optionally, you can handle success and update UI accordingly
     } catch (error) {
       console.error("Error buying real estate: ", error);
-      // Handle error, show error message to the user, etc.
     }
   };
 

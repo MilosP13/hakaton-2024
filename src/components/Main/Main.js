@@ -15,13 +15,11 @@ const Main = () => {
     const { ethereum } = window;
     if (ethereum) {
       try {
-        // Check if there's already a pending request
         if (ethereum._metamask?.isApproved) {
           console.log("A MetaMask request is already pending. Please wait.");
           return;
         }
   
-        // Request account access if not already authorized
         const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
         setAccount(accounts[0]);
         console.log("Connected to Ethereum account: ", accounts[0]);
