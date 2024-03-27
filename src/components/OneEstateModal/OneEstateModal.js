@@ -111,15 +111,9 @@ const OneEstateModal = ({ web3, account, factoryAddress, oneEstate, onClose }) =
     <div className="modal">
       <div className="modal-content">
         <h2>{estateInfo.locationName}, Belgrade</h2>
-        <p className="info-paragraph">Sqft: {estateInfo.sqft}m2</p>
-        <p className="info-paragraph">Floor: {estateInfo.floor}</p>
-        <p className="info-paragraph">Heating Type: {estateInfo.heatingType}</p>
-        <p className="info-paragraph">Number of Rooms: {estateInfo.numberOfRooms}</p>
-        <p className="info-paragraph">Registered: {estateInfo.registered ? "Yes" : "No"}</p>
-        <p className="info-paragraph">Mortgage: {estateInfo.mortgageFree ? "Yes" : "No"}</p>
 
-        {/* Placeholder for pictures */}
-        <div className="picture-container">
+          {/* Placeholder for pictures */}
+          <div className="picture-container">
           <button className="prev-btn" onClick={handlePrevClick}>{'<'}</button>
           <div className="slider" style={{ transform: `translateX(-${currentImage * 100}%)` }}>
             {images.map((imageUrl, index) => (
@@ -127,6 +121,15 @@ const OneEstateModal = ({ web3, account, factoryAddress, oneEstate, onClose }) =
             ))}
           </div>
           <button className="next-btn" onClick={handleNextClick}>{'>'}</button>
+        </div>
+
+        <div className="info">
+        <p className="info-paragraph">Sqft: {estateInfo.sqft}m2</p>
+        <p className="info-paragraph">Floor: {estateInfo.floor}</p>
+        <p className="info-paragraph">Heating Type: {estateInfo.heatingType}</p>
+        <p className="info-paragraph">Number of Rooms: {estateInfo.numberOfRooms}</p>
+        <p className="info-paragraph">Registered: {estateInfo.registered ? "Yes" : "No"}</p>
+        <p className="info-paragraph">Mortgage: {estateInfo.mortgageFree ? "Yes" : "No"}</p>
         </div>
 
         <p className='price-paragraph'>Price: {estateInfo.price}17.000€</p>
